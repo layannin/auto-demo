@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "description": "Demo of https://intuit.github.io/auto/index",
   "repository": "git@github.com:layannin/auto-demo.git",
-  "author": "apolo <agustin.polo@cloudx.com>",
+  "author": "layannin <layannin@gmail.com>",
   "license": "MIT",
   "private": true,
   "devDependencies": {

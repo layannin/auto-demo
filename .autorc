@@ -4,8 +4,8 @@
     "conventional-commits",
     ["jira", { "url": "https://symend.atlassian.net/browse" }]
   ],
-  owner: "poloagustin",
+  owner: "layannin",
   repo: "auto-demo",
-  name: "apolo",
-  email: "poloagustin@gmail.com",
+  name: "",
+  email: "layannin@gmail.com",
 }

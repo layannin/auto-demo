@@ -1,0 +1,78 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  dev:
+    name: Deploy Packages to dev
+    runs-on: ubuntu-latest
+    needs: release
+    environment: dev
+    env:
+      NETLIFY_AUTH_TOKEN: ${{secrets.NETLIFY_AUTH_TOKEN}}
+      NETLIFY_SITE_ID: ${{secrets.NETLIFY_SITE_ID}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+        env:
+          CYPRESS_INSTALL_BINARY: 0
+      - name: Build
+        run: yarn lerna run build --since HEAD~1
+      - name: Deploy
+        run: yarn lerna run deploy --since HEAD~1
+  test:
+    name: Deploy Packages to Test
+    runs-on: ubuntu-latest
+    needs: dev
+    environment: test
+    env:
+      NETLIFY_AUTH_TOKEN: ${{secrets.NETLIFY_AUTH_TOKEN}}
+      NETLIFY_SITE_ID: ${{secrets.NETLIFY_SITE_ID}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+        env:
+          CYPRESS_INSTALL_BINARY: 0
+      - name: Build
+        run: yarn lerna run build --since HEAD~1
+      - name: Deploy
+        run: yarn lerna run deploy --since HEAD~1
+  prod:
+    name: Deploy Packages to Prod
+    runs-on: ubuntu-latest
+    needs: test
+    environment: prod
+    env:
+      NETLIFY_AUTH_TOKEN: ${{secrets.NETLIFY_AUTH_TOKEN}}
+      NETLIFY_SITE_ID: ${{secrets.NETLIFY_SITE_ID}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install deps and build (with cache)
+        uses: bahmutov/npm-install@v1
+        env:
+          CYPRESS_INSTALL_BINARY: 0
+      - name: Build
+        run: yarn lerna run build --since HEAD~1
+      - name: Deploy
+        run: yarn lerna run deploy --since HEAD~1
+
+
+      

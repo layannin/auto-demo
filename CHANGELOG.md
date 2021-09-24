@@ -1,3 +1,25 @@
+# v0.5.1 (Fri Sep 24 2021)
+
+#### ⚠️ Pushed to `main`
+
+- change author ([@layannin](https://github.com/layannin))
+- change author ([@LMontilla](https://github.com/LMontilla))
+- repo ([@LMontilla](https://github.com/LMontilla))
+- release unify ([@LMontilla](https://github.com/LMontilla))
+- only one deploy ([@LMontilla](https://github.com/LMontilla))
+- secret ([@LMontilla](https://github.com/LMontilla))
+- env ([@LMontilla](https://github.com/LMontilla))
+- CD test ([@LMontilla](https://github.com/LMontilla))
+- chore: init repo ([@poloagustin](https://github.com/poloagustin))
+
+#### Authors: 3
+
+- [@LMontilla](https://github.com/LMontilla)
+- Agustin Polo ([@poloagustin](https://github.com/poloagustin))
+- L. Montilla ([@layannin](https://github.com/layannin))
+
+---
+
 # v0.5.0 (Mon Aug 30 2021)
 
 #### 🚀 Enhancement
